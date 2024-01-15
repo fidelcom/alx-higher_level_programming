@@ -64,30 +64,7 @@ class TestBase(unittest.TestCase):
             Rectangle(0, 1, 1, 1, 1)
         with self.assertRaisesRegex(ValueError, "height must be > 0"):
             Rectangle(1, -20, 1, 1, 1)
-        ss(self):
-        """Test class created is indeed Rectangle"""
-        self.assertEqual(type(Rectangle(1, 2)), Rectangle)
-
-    """Test methods"""
-    def test_area(self):
-        """Test method: area"""
-        self.assertEqual(Rectangle(3, 4).area(), 12)
-        self.assertEqual(Rectangle(8, 7, 0, 0).area(), 56)
-        self.assertEqual(Rectangle(8, 7, 0, 0, 12).area(), 56)
-
-    def test_display(self):
-        """Test method: display"""
-        with StringIO() as bufr, redirect_stdout(bufr):
-            Rectangle(5, 3).display()
-            b = bufr.getvalue()
-        self.assertEqual(b, '#####\n#####\n#####\n')
-        with StringIO() as bufr, redirect_stdout(bufr):
-            Rectangle(5, 3, 1, 2).display()
-            b = bufr.getvalue()
-        self.assertEqual(b, '\n\n #####\n #####\n #####\n')
-
-    def test_print(self):
-    with self.assertRaisesRegex(ValueError, "x must be >= 0"):
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
             Rectangle(1, 1, -1, 1, 1)
         with self.assertRaisesRegex(ValueError, "y must be >= 0"):
             Rectangle(1, 1, 1, -99, 1)
@@ -112,7 +89,30 @@ class TestBase(unittest.TestCase):
             Rectangle(None)
 
     """Test class"""
-    def test_cla    """Test method: __str__"""
+    def test_class(self):
+        """Test class created is indeed Rectangle"""
+        self.assertEqual(type(Rectangle(1, 2)), Rectangle)
+
+    """Test methods"""
+    def test_area(self):
+        """Test method: area"""
+        self.assertEqual(Rectangle(3, 4).area(), 12)
+        self.assertEqual(Rectangle(8, 7, 0, 0).area(), 56)
+        self.assertEqual(Rectangle(8, 7, 0, 0, 12).area(), 56)
+
+    def test_display(self):
+        """Test method: display"""
+        with StringIO() as bufr, redirect_stdout(bufr):
+            Rectangle(5, 3).display()
+            b = bufr.getvalue()
+        self.assertEqual(b, '#####\n#####\n#####\n')
+        with StringIO() as bufr, redirect_stdout(bufr):
+            Rectangle(5, 3, 1, 2).display()
+            b = bufr.getvalue()
+        self.assertEqual(b, '\n\n #####\n #####\n #####\n')
+
+    def test_print(self):
+        """Test method: __str__"""
         r = Rectangle(1, 2, 3, 4, 5)
         self.assertEqual(str(r), '[Rectangle] (5) 3/4 - 1/2')
 
